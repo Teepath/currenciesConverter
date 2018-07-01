@@ -5,6 +5,7 @@ function changeCurrencies(){
     let fromCurrency = document.getElementById('fromCurrency').value;
 	let toCurrency = document.getElementById('toCurrency').value;
 	let amount= document.getElementById('amount').value;	
+  let result = document.getElementById('result'); 
 
 
  fromCurrency = encodeURIComponent(fromCurrency);
@@ -39,16 +40,16 @@ fetch(url)
 
        		//console.log(data[key]);
        		val = data[query];
+           result.innerHTML = val * amount;
        	}
 
-       let result = document.getElementById('result'); 
-       	if((amount > 0)  && (fromCurrency.length >0) && (toCurrency.length >0)){
+       
+    //   	if((amount > 0)  && (fromCurrency.length >0) && (toCurrency.length >0)){
 
        
-		  let total = val * amount;
-       result.innerHTML = total;
+		 
 
-}
+//}
 
        
      

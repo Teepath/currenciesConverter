@@ -3,8 +3,7 @@
 //const dataCacheName = 'currency-conversion-v1';
 const cacheName = 'cache-money-v1';
 const filesToCache = [
-  '/',
-  '/index.html',
+  'index.html',
   '/scripts/app.js',
   '/change.js',
   'converter.js',
