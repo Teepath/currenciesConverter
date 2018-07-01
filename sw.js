@@ -1,6 +1,4 @@
 
-
-//const dataCacheName = 'currency-conversion-v1';
 const cacheName = 'cache-money-v1';
 const filesToCache = [
   'index.html',
@@ -28,7 +26,7 @@ self.addEventListener('activate', function(e) {
   console.log('[ServiceWorker] Activate');
   e.waitUntil(
 
-   // createDB()
+    createDB()
 
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
