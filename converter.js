@@ -77,38 +77,7 @@ dropdownB.selectedIndex = 0;
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
   });
-      /* res.json())
-  .then(data =>{
-      console.log(data);cc
-        let val = data[query];
-        if (val) {
-              let total = val * amount;
-              cb(null, Math.round(total * 100) / 100);
-            } else {
-              let err = new Error("Value not found for " + query);
-              console.log(err);s
-              cb(err);
-            }
-
-  let results  = data;
-  let options="";
-  for(let result of results){
-    options +="<option>" + result[id] + "</option>";
-
-  }
-
-  fromCurrency.innerHTML = options;
-  toCurrency.innerHTML = options;
-
-      })
-
-      .catch(e){
-            console.log("Parse error: ", e);
-            cb(e);
-          }.on('error', (e)=>{
-        console.log("Got an error: ", e);
-        cb(e);
-  });*/
+   
  
 
 }
@@ -118,6 +87,4 @@ dropdownB.selectedIndex = 0;
 convertCurrency();
 
 
-//convertCurrency(10, 'USD', 'PHP', function(err, amount) {
- // console.log(amount);
-//
+
