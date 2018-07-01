@@ -1,0 +1,23 @@
+{
+  "name": "currenciesconverter",
+  "version": "1.0.0",
+  "description": "currency App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teepath/currenciesConverter.git"
+  },
+  "author": "Tunde Adebanjo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Teepath/currenciesConverter/issues"
+  },
+  "homepage": "https://github.com/Teepath/currenciesConverter#readme",
+  "dependencies": {
+    "bower": "^1.8.4",
+    "express": "^4.16.3"
+  }
+}

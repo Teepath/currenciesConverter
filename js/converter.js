@@ -1,31 +1,24 @@
+"strict mode"
 
-'strict mode'
 
-const https = require('https');
 
 function convertCurrency(amount, fromCurrency, toCurrency, cb) {
-  const apiKey = 'your-api-key-here';
+  
+  amount = document.getElementById('amount').value;
+  fromCurrency = document.getElementById('fromCurrency').value;
+  toCurrency = document.getElementById('toCurrency').value;
 
   fromCurrency = encodeURIComponent(fromCurrency);
   toCurrency = encodeURIComponent(toCurrency);
   const query = fromCurrency + '_' + toCurrency;
 
   const url = 'https://www.currencyconverterapi.com/api/v5/convert?q='
-            + query + '&compact=ultra&apiKey=' + apiKey;
+            + query ;
 
-  https.get(url, (res)=>{
-      const body = '';
-
-      res.on('data', (chunk) =>{
-          body += chunk;
-      });
-
-      res.on('end', ()=>{
-          try {
-            let jsonObj = JSON.parse(body);
-
-            let val = jsonObj[query];
-            if (val) {
+  fetch(url).then(res=>
+      res.json()).then(data =>{
+        let val = data[query];
+        if (val) {
               let total = val * amount;
               cb(null, Math.round(total * 100) / 100);
             } else {
@@ -33,20 +26,33 @@ function convertCurrency(amount, fromCurrency, toCurrency, cb) {
               console.log(err);
               cb(err);
             }
-          } catch(e) {
+
+
+
+  let results  = data;
+  let options="";
+  for(let result of results){
+    options +="<option>" + result[id] + "</option>";
+
+  }
+
+  fromCurrency.innerHTML = options;
+  toCurrency.innerHTML = options;
+
+      }).catch(e) {
             console.log("Parse error: ", e);
             cb(e);
-          }
-      });
-  }).on('error', (e)=>{
+          }.on('error', (e)=>{
         console.log("Got an error: ", e);
         cb(e);
   });
+      
+  
+
 }
 
 
-/*
+
 convertCurrency(10, 'USD', 'PHP', function(err, amount) {
   console.log(amount);
 });
-*/

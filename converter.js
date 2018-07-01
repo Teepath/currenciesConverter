@@ -10,20 +10,20 @@ function convertCurrency(amount, fromCurrency, toCurrency, cb) {
 dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
-defaultOption.text = 'USD';
+defaultOption.text = 'currencies';
 
 dropdown.add(defaultOption);
 dropdown.selectedIndex = 0;
 
 
-dropdown = document.getElementById('toCurrency');
-dropdown.length = 0;
+let dropdownB = document.getElementById('toCurrency');
+dropdownB.length = 0;
 
-//let defaultOptionB = document.createElement('option');
-//defaultOptionB.text = 'EUR';
+let defaultOptionB = document.createElement('option');
+defaultOptionB.text = 'currencies';
 
-//dropdownB.add(defaultOption);
-//dropdownB.selectedIndex = 0; 
+dropdownB.add(defaultOptionB);
+dropdownB.selectedIndex = 0; 
 
   fromCurrency = encodeURIComponent(fromCurrency);
   toCurrency = encodeURIComponent(toCurrency);
@@ -51,11 +51,24 @@ dropdown.length = 0;
         //console.log(data.results[key].id);
     
           option = document.createElement('option');
-          option.text = data.results[key].id;
-          console.log(data.results[key].id);
+          option.text = data.results[key].id ;
+         // console.log( `${data.results[key].currencyName} ( ${data.results[key].currencySymbol})`);
           //option.value = data[i].countryname;
+
           dropdown.add(option);
 }
+
+    for (let key in data.results) {
+        //console.log(data.results[key].id);
+    
+          option = document.createElement('option');
+          option.text =  data.results[key].id;
+         // console.log( `${data.results[key].currencyName} ( ${data.results[key].currencySymbol})`);
+          //option.value = data[i].countryname;
+
+          dropdownB.add(option);
+}
+
       
 
       });
@@ -121,5 +134,3 @@ convertCurrency();
 //convertCurrency(10, 'USD', 'PHP', function(err, amount) {
  // console.log(amount);
 //
-
-
