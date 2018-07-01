@@ -6,6 +6,7 @@ const filesToCache = [
   '/change.js',
   'converter.js',
   '/package.js',
+  'idb.js',
   '/js/bootstrap.min.js',
   '/js/converter.js',
   '/js/jquery.slim.min.js',
@@ -66,37 +67,3 @@ self.addEventListener('fetch', function(e) {
   }
 });
 
-
-function createDB(){
-
-const idbPromise = idb.open('converter', 1, (upgradeDB)=>{
-  let store= upgradeDB.createObjectStore('https://free.currencyconverterapi.com/api/v5/currencies', {
-    keyPath: 'id'
-  });
-});
-
-
-
-idbPromise.then((db)=>{
-  let tx = db.transaction('https://free.currencyconverterapi.com/api/v5/currencies');
-  let store = tx.objectStore('https://free.currencyconverterapi.com/api/v5/currencies');
-  return store.getAll(); 
-}).then((val)=>{
-    for(key in val.results){
-      console.log(val.result[key]);
-    }
-});
-
- 
-
-idbPromise.then((db)=>{
-  let tx =db.transaction('https://free.currencyconverterapi.com/api/v5/currencies', 'readwrite');
-  let store = tx.objectStore('https://free.currencyconverterapi.com/api/v5/currencies');
-  store.put('https://free.currencyconverterapi.com/api/v5/currencies');
-
-  return tx.complete;
-}).then(()=>{
-  console.log("transaction is successafully completed");
-});
-
-}
