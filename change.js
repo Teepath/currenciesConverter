@@ -2,7 +2,7 @@
 function changeCurrencies(){
 
 
-    let fromCurrency = document.getElementById('fromCurrency').value;
+  let fromCurrency = document.getElementById('fromCurrency').value;
 	let toCurrency = document.getElementById('toCurrency').value;
 	let amount= document.getElementById('amount').value;	
   let result = document.getElementById('result'); 
@@ -19,7 +19,7 @@ fetch(url)
  .then(  
     function(response) {  
       if (response.status !== 200) {  
-        console.warn('Looks like there was a problem. Status Code: ' + 
+        console.log('Looks like there was a problem. Status Code: ' + 
           response.status);  
         return;  
       }
@@ -28,7 +28,7 @@ fetch(url)
 
       response.json().then(function(data) { 
         
-       console.log(data);
+      // console.log(data);
        if(data){
 
        	let val;
@@ -38,18 +38,21 @@ fetch(url)
 
        	for(let query in data){
 
-       		//console.log(data[key]);
        		val = data[query];
-           result.innerHTML = val * amount;
+           if((amount > 0)  && (fromCurrency.length >0) && (toCurrency.length >0)){
+
+       
+     
+
+
+
+           result.innerHTML = (val * parseInt(amount)).toFixed(2);
+
+      }
+
+
        	}
 
-       
-    //   	if((amount > 0)  && (fromCurrency.length >0) && (toCurrency.length >0)){
-
-       
-		 
-
-//}
 
        
      

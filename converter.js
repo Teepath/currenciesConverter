@@ -1,13 +1,12 @@
 "strict mode"
 
-const output = "";
 
 function convertCurrency(amount, fromCurrency, toCurrency, cb) {
   
   amount = document.getElementById('amount').value;
 
  let dropdown = document.getElementById('fromCurrency');
-dropdown.length = 0;
+ dropdown.length = 0;
 
 let defaultOption = document.createElement('option');
 defaultOption.text = 'currencies';
@@ -51,20 +50,33 @@ dropdownB.selectedIndex = 0;
         //console.log(data.results[key].id);
     
           option = document.createElement('option');
-          option.text = data.results[key].id ;
-         // console.log( `${data.results[key].currencyName} ( ${data.results[key].currencySymbol})`);
-          //option.value = data[i].countryname;
+          option.text = data.results[key]['id'] ;
+         
 
           dropdown.add(option);
 }
 
-    for (let key in data.results) {
+   // for (let key in data.results) {
         //console.log(data.results[key].id);
+
+        for( let key of Object.values(data.results)){
+
+          let val = key.id.split(' ');
+          val.sort((a,b)=>{
+
+           if(a < b){
+              return a.length.localeCompare(b.length);
+            }
+          });
+
+          console.log(val.join(','));
     
           option = document.createElement('option');
-          option.text =  data.results[key].id;
+       //   option.text =  data.results[key].id;
          // console.log( `${data.results[key].currencyName} ( ${data.results[key].currencySymbol})`);
-          //option.value = data[i].countryname;
+          //option.
+
+          option.text = val;
 
           dropdownB.add(option);
 }
